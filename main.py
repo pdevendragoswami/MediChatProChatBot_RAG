@@ -3,9 +3,13 @@ from app.streamlit_ui import pdf_uploader
 from app.pdf_utils import extract_text_from_pdf
 from app.vectorstore_utils import create_faiss_index, retrieve_relevant_docs
 from app.chat_utils import get_chat_model, ask_chat_model
-from app.config import EURI_API_KEY
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import time
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+EURI_API_KEY = os.getenv("EURI_API_KEY")
 
 st.set_page_config(
     page_title="MediChat Pro - Medical Document Assistant",
@@ -127,7 +131,7 @@ with st.sidebar:
                 st.session_state.vectorstore = vectorstore
 
                 # initialize the chat model
-                chat_model = get_chat_model(EURI_API_KEY)
+                chat_model = get_chat_model(api_key=EURI_API_KEY)
                 st.session_state.chat_model = chat_model 
 
 

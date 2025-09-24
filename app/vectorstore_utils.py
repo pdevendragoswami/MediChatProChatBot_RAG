@@ -1,6 +1,5 @@
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from app.config import HUGGING_FACE_API_KEY
 from typing import List
 
 
